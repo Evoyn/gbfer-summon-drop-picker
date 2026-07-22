@@ -1,0 +1,19 @@
+{
+  "ModId": "gbfrelink.summon.picker",
+  "ModName": "GBFRER Summon Drop Picker",
+  "ModAuthor": "Nebu",
+  "ModVersion": "2.0.0",
+  "ModDescription": "Forces ALL six Infinity-boss summons to drop at once (Behemoth III, Wee Pincer III, Lucilius, Beelzebub, Rolan, Lilith) - each from its own quest - and lets you set every summon's skill AND equip bonus INDEPENDENTLY via the included GUI app (GBFRER Summon Picker.exe). Values stay at each summon's legit max. Offline, no install. Solo/offline only. See README.txt.",
+  "ModDll": "",
+  "ModIcon": "",
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "gbfrelink.summon.picker.ReleaseMetadata.json",
+  "IgnoreRegexes": [ ".*\\.json" ],
+  "IncludeRegexes": [ "\\.deps\\.json", "\\.runtimeconfig\\.json", "ModConfig\\.json" ],
+  "PluginData": { "GitHubDependencies": { "IdToConfigMap": { "gbfrelink.utility.manager": { "Config": { "UserName": "WistfulHopes", "RepositoryName": "gbfrelink.utility.manager", "UseReleaseTag": true, "AssetFileName": "Mod.zip" }, "ReleaseMetadataName": "gbfrelink.utility.manager.ReleaseMetadata.json" } } } },
+  "IsUniversalMod": false,
+  "ModDependencies": [ "gbfrelink.utility.manager" ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [ "granblue_fantasy_relink.exe", "granblue_fantasy_relink_endless_ragnarok_beta_test.exe", "granblue_fantasy_relink_endless_ragnarok_demo.exe" ],
+  "ProjectUrl": ""
+}
