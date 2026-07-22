@@ -22,6 +22,10 @@ bonus you choose, by re-weighting the game's own `summon_lot.tbl`.
   `picker_settings.json`), and — only when you press **Apply & Run Game** — it starts
   `Reloaded-II.exe` to launch the game. That's the whole of it. No memory editing, no
   code injection, no background processes.
+- **Nothing to install.** The Visual C++ runtime is statically linked (see
+  `.cargo/config.toml`, which sets `+crt-static`), so the `.exe` runs on a clean
+  Windows 10/11 — no VC++ Redistributable, no .NET, no other dependencies. Every DLL it
+  imports (`kernel32`, `user32`, `gdi32`, `opengl32`, `shell32`, …) ships with Windows.
 - **Unsigned binary.** The released `.exe` isn't code-signed, so Windows SmartScreen may
   warn on first run. If you'd rather not trust a prebuilt binary, build it yourself
   (below) — you get the same app.
