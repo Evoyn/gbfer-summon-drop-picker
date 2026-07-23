@@ -54,13 +54,15 @@ fn each_row_of(b: &[u8], pool: &str) -> Vec<usize> {
         .collect()
 }
 
-// the rest go to 1 not 0, keep + rest still rolls, just heavily rigged
+// vanilla never ships a 0 weight so zeroing the rest is untested, instead pin
+// the chosen row way up. leak is ~1 in a million, same as the max drop-rate mods.
+const FORCED: i32 = 1_000_000;
+
 fn force(b: &mut [u8], pool: &str, keep: &str) {
     let keep = hex(keep);
     for off in each_row_of(b, pool) {
-        if field(b, off + 4) != keep {
-            b[off + 12..off + 16].copy_from_slice(&1i32.to_le_bytes());
-        }
+        let w = if field(b, off + 4) == keep { FORCED } else { 1 };
+        b[off + 12..off + 16].copy_from_slice(&w.to_le_bytes());
     }
 }
 
