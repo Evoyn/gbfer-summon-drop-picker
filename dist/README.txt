@@ -65,6 +65,9 @@ HOW TO USE
   starts Reloaded-II. If you'd rather not run an .exe at all, use the
   pick.bat script edition of this mod instead.
 
+  The full source code is public - read it or build it yourself:
+      https://github.com/Evoyn/gbfer-summon-drop-picker
+
 ------------------------------------------------------------------------
 CREDITS
 ------------------------------------------------------------------------

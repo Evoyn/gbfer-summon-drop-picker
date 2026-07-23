@@ -5,30 +5,32 @@ mod for *Granblue Fantasy: Relink* (Endless Ragnarok). It's published here so yo
 read exactly what the `.exe` does before you run it.
 
 The app is a helper for the [Reloaded-II](https://github.com/Reloaded-Project/Reloaded-II)
-data mod. It lets you force all six Infinity-boss summons — Behemoth III, Wee Pincer III,
-Lucilius, Beelzebub, Rolan and Lilith — to drop at once, each with the skill and equip
-bonus you choose, by re-weighting the game's own `summon_lot.tbl`.
+data mod. It lets you force all eight Infinity-boss summons (Behemoth III, Wee Pincer III,
+Albacore III, Furycane Nihilla, Lucilius, Beelzebub, Rolan and Lilith) to drop at once,
+each with the skill and equip bonus you choose, by re-weighting the game's own
+`summon_lot.tbl`. Astral summons can also be capped to normal-tier values (50% instead
+of 100%) if the astral maximum is more than you want.
 
 ## Is it safe?
 
-- **100% offline.** There is no networking anywhere in this code — no HTTP client, no
+- **100% offline.** There is no networking anywhere in this code - no HTTP client, no
   sockets, no telemetry, no auto-update. The only dependencies are `eframe`/`egui`
   (the GUI), `rfd` (the native "Browse for file" dialog), `serde_json` (reads a local
   settings file) and `winresource` (embeds the icon at build time). None of them are
   used to reach the internet here. Search the source for `reqwest`, `http`, `TcpStream`
-  or `std::net` — there are no hits.
+  or `std::net` - there are no hits.
 - **What it actually touches:** it reads and writes files only inside its own mod folder
   (`summon_lot.tbl` and the three other tables it ships, plus a small
-  `picker_settings.json`), and — only when you press **Apply & Run Game** — it starts
+  `picker_settings.json`), and - only when you press **Apply & Run Game** - it starts
   `Reloaded-II.exe` to launch the game. That's the whole of it. No memory editing, no
   code injection, no background processes.
 - **Nothing to install.** The Visual C++ runtime is statically linked (see
   `.cargo/config.toml`, which sets `+crt-static`), so the `.exe` runs on a clean
-  Windows 10/11 — no VC++ Redistributable, no .NET, no other dependencies. Every DLL it
-  imports (`kernel32`, `user32`, `gdi32`, `opengl32`, `shell32`, …) ships with Windows.
+  Windows 10/11 - no VC++ Redistributable, no .NET, no other dependencies. Every DLL it
+  imports (`kernel32`, `user32`, `gdi32`, `opengl32`, `shell32`, ...) ships with Windows.
 - **Unsigned binary.** The released `.exe` isn't code-signed, so Windows SmartScreen may
   warn on first run. If you'd rather not trust a prebuilt binary, build it yourself
-  (below) — you get the same app.
+  (below) - you get the same app.
 
 ## Build it yourself
 
@@ -45,9 +47,9 @@ The binary lands at `target/release/egui_picker.exe` (distributed in the mod as
 ## How it works
 
 `summon_lot.tbl` is a fixed-layout table: an 8-byte header (row count) followed by
-20-byte rows — `Key`, `SkillId`/`BaseParamId`, `CurveId`, `Weight`, `Unk`, all
+20-byte rows - `Key`, `SkillId`/`BaseParamId`, `CurveId`, `Weight`, `Unk`, all
 little-endian. To "force" a choice, the app sets the `Weight` of every other row in a
-pool to `1` and leaves the chosen row untouched — the same fair bias the official table
+pool to `1` and leaves the chosen row untouched - the same fair bias the official table
 tools produce, done here as a direct byte patch so nothing extra has to be installed.
 The base tables (with each summon's equip pool split out so the bonuses can be chosen
 independently) are embedded into the exe via `include_bytes!`.
@@ -59,20 +61,20 @@ The app can also install itself: if it's run as a lone `.exe`, it writes its own
 
 | Path | What it is |
 |------|------------|
-| `src/main.rs` | The entire app — UI, the table patcher, Reloaded-II detection & launch. |
+| `src/main.rs` | The entire app - UI, the table patcher, Reloaded-II detection & launch. |
 | `base/*.tbl` | The mod's base game tables, embedded into the exe. |
 | `dist/ModConfig.json` | The Reloaded-II mod manifest (also embedded, for self-install). |
 | `build.rs`, `icon.ico`, `icon_256.rgba` | The window / executable icon. |
 
 ## Credits
 
-- **Nenkai** — GBFRDataTools and the Relink modding documentation / hashing.
-- **WistfulHopes** — `gbfrelink.utility.manager`, the mod loader this mod depends on.
-- **Sewer56 / Reloaded-Project** — Reloaded-II.
+- **Nenkai** - GBFRDataTools and the Relink modding documentation / hashing.
+- **WistfulHopes** - `gbfrelink.utility.manager`, the mod loader this mod depends on.
+- **Sewer56 / Reloaded-Project** - Reloaded-II.
 - Built with **egui / eframe**.
 
 ## License
 
 The code is released under the [MIT License](LICENSE). The `base/*.tbl` files are
 modified *Granblue Fantasy: Relink* data, included only for interoperability; all game
-assets remain © their respective owners.
+assets remain (c) their respective owners.

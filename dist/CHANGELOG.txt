@@ -1,0 +1,14 @@
+GBFRER Summon Drop Picker (GUI) - Changelog
+===========================================
+
+v2.0.0
+------
+- Major rewrite: fully independent, per-summon customization
+- Wee Pincer III added as a selectable summon
+- Full 11-bonus menu for every summon
+- Every summon offers its full skill pool
+- Sigilis skills locked to max level 15
+- New picker engine
+- Picks are saved
+
+Source code: https://github.com/Evoyn/gbfer-summon-drop-picker
