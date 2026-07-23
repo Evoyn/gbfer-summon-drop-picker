@@ -7,6 +7,7 @@ pub const WINDOW_ICON: &[u8] = include_bytes!("../assets/icon_256.rgba");
 
 const ACCENT: Color32 = Color32::from_rgb(0x8b, 0x7c, 0xf0);
 const MUTED: Color32 = Color32::from_rgb(0x8b, 0x92, 0xa0);
+const QUEST: Color32 = Color32::from_rgb(0x6f, 0xd6, 0xc4);
 const CARD: Color32 = Color32::from_rgb(0x1e, 0x20, 0x2a);
 const LINE: Color32 = Color32::from_rgb(0x2d, 0x32, 0x41);
 
@@ -147,6 +148,8 @@ impl eframe::App for App {
                         card(ui, CARD).show(ui, |ui| {
                             ui.horizontal(|ui| {
                                 ui.label(RichText::new(s.name).size(16.0).strong());
+                                ui.label(RichText::new(format!("  {}", s.quest)).size(12.5).color(QUEST))
+                                    .on_hover_text("recommended quest to farm this summon");
                                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                                     if s.astral {
                                         chip(ui, Color32::from_rgb(0x3d, 0x33, 0x5e), Color32::from_rgb(0xcf, 0xc3, 0xf5), "ASTRAL");
