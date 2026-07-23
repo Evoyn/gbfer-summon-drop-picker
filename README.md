@@ -54,17 +54,29 @@ tools produce, done here as a direct byte patch so nothing extra has to be insta
 The base tables (with each summon's equip pool split out so the bonuses can be chosen
 independently) are embedded into the exe via `include_bytes!`.
 
-The app can also install itself: if it's run as a lone `.exe`, it writes its own
-`ModConfig.json` and default tables next to itself so Reloaded-II recognises it as a mod.
+For the astral summons, the half-cap option repoints their equip pool at a different
+level curve. The astral curve spans levels 5-9, so level 9 gives the astral maximum
+(100%) and level 6 gives exactly the normal-tier values (50%). Both are levels the game
+rolls naturally.
+
+The app can also install itself: run as a lone `.exe`, it writes its own `ModConfig.json`
+and default tables next to itself so Reloaded-II recognises it as a mod. It also has a
+"Restore vanilla tables" button, which writes the untouched game tables back so a forced
+drop can be cleared before removing the mod.
 
 ## What's in here
 
 | Path | What it is |
 |------|------------|
-| `src/main.rs` | The entire app - UI, the table patcher, Reloaded-II detection & launch. |
+| `src/data.rs` | The summon and bonus tables (ids, hashes, values). |
+| `src/patch.rs` | The embedded `.tbl` bytes and the byte patcher. |
+| `src/reloaded.rs` | Reloaded-II detection, dependency check, launching. |
+| `src/app.rs` | State and the actions (apply, restore, run). |
+| `src/ui.rs` | The egui layout and theme. |
 | `base/*.tbl` | The mod's base game tables, embedded into the exe. |
+| `vanilla/*.tbl` | The untouched game tables, for the restore option. |
 | `dist/ModConfig.json` | The Reloaded-II mod manifest (also embedded, for self-install). |
-| `build.rs`, `icon.ico`, `icon_256.rgba` | The window / executable icon. |
+| `build.rs`, `assets/` | The window and executable icon. |
 
 ## Credits
 
@@ -75,6 +87,6 @@ The app can also install itself: if it's run as a lone `.exe`, it writes its own
 
 ## License
 
-The code is released under the [MIT License](LICENSE). The `base/*.tbl` files are
-modified *Granblue Fantasy: Relink* data, included only for interoperability; all game
+MIT. Do what you want with the code, no warranty. The `base/*.tbl` and `vanilla/*.tbl`
+files are *Granblue Fantasy: Relink* data, included only for interoperability; all game
 assets remain (c) their respective owners.

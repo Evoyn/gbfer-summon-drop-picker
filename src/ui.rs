@@ -3,7 +3,7 @@ use eframe::egui::{self, Color32, CornerRadius, Margin, RichText, Stroke};
 use crate::app::App;
 use crate::data::{BONUSES, SUMMONS};
 
-pub const WINDOW_ICON: &[u8] = include_bytes!("../icon_256.rgba");
+pub const WINDOW_ICON: &[u8] = include_bytes!("../assets/icon_256.rgba");
 
 const ACCENT: Color32 = Color32::from_rgb(0x8b, 0x7c, 0xf0);
 const MUTED: Color32 = Color32::from_rgb(0x8b, 0x92, 0xa0);
