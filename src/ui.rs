@@ -8,6 +8,7 @@ pub const WINDOW_ICON: &[u8] = include_bytes!("../assets/icon_256.rgba");
 const ACCENT: Color32 = Color32::from_rgb(0x8b, 0x7c, 0xf0);
 const MUTED: Color32 = Color32::from_rgb(0x8b, 0x92, 0xa0);
 const QUEST: Color32 = Color32::from_rgb(0x6f, 0xd6, 0xc4);
+const GREEN: Color32 = Color32::from_rgb(0x35, 0x9e, 0x63);
 const CARD: Color32 = Color32::from_rgb(0x1e, 0x20, 0x2a);
 const LINE: Color32 = Color32::from_rgb(0x2d, 0x32, 0x41);
 
@@ -18,6 +19,7 @@ enum Act {
     Save,
     Recheck,
     Restore,
+    FinishRestore,
 }
 
 pub fn setup_style(ctx: &egui::Context) {
@@ -228,9 +230,17 @@ impl eframe::App for App {
                     });
 
                     ui.collapsing("Removing the mod", |ui| {
-                        ui.label(RichText::new("Disabling the mod can leave the forced drops in place if the loader already deployed the tables. Restore the vanilla tables, launch the game once with the mod still enabled, then disable or delete it.").color(MUTED));
+                        ui.label(RichText::new("Just disabling the mod can leave the forced drops in place. Restore first, start the game once, then remove the mod.").color(MUTED));
                         ui.add_space(4.0);
-                        if ui.button("Restore vanilla tables").clicked() {
+                        if self.restored {
+                            let go = egui::Button::new(RichText::new("Start the game to finish").color(Color32::WHITE).strong())
+                                .fill(GREEN)
+                                .min_size(egui::vec2(200.0, 30.0));
+                            if ui.add(go).clicked() {
+                                act = Act::FinishRestore;
+                            }
+                            ui.label(RichText::new("click the green button, or just start the game from Steam / Reloaded-II yourself").color(MUTED).size(12.0));
+                        } else if ui.button("Restore vanilla tables").clicked() {
                             act = Act::Restore;
                         }
                     });
@@ -263,6 +273,7 @@ impl eframe::App for App {
             Act::Save => self.save_config(),
             Act::Recheck => self.recheck_deps(),
             Act::Restore => self.restore_vanilla(),
+            Act::FinishRestore => self.finish_restore(),
             Act::None => {}
         }
     }

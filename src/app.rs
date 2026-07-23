@@ -14,6 +14,7 @@ pub struct App {
     pub status: String,
     pub dep: DepReport,
     pub logo: Option<eframe::egui::TextureHandle>,
+    pub restored: bool,
     exe_dir: PathBuf,
 }
 
@@ -64,6 +65,7 @@ impl App {
             status: "Ready. Set each summon, then Apply.".into(),
             dep: reloaded::check_deps(),
             logo: None,
+            restored: false,
             exe_dir,
         }
     }
@@ -107,6 +109,7 @@ impl App {
     }
 
     pub fn do_apply(&mut self) {
+        self.restored = false;
         self.status = match self.apply() {
             Ok(()) => "Applied. Enable only this mod in Reloaded-II, then relaunch the game.".into(),
             Err(e) => format!("Could not write tables: {e}. Is the game running?"),
@@ -120,13 +123,29 @@ impl App {
         let write = fs::create_dir_all(&dir)
             .and_then(|_| VANILLA.iter().try_for_each(|(n, b)| fs::write(dir.join(n), *b)));
 
-        self.status = match write {
-            Ok(()) => "Vanilla tables restored. Launch the game once with the mod still enabled, then disable or delete it.".into(),
-            Err(e) => format!("Could not write tables: {e}"),
+        match write {
+            Ok(()) => {
+                self.restored = true;
+                self.status = "Vanilla restored. Click the green button to start the game and finish.".into();
+            }
+            Err(e) => self.status = format!("Could not write tables: {e}"),
+        }
+    }
+
+    // launches the game without re-applying, so the loader deploys the vanilla tables
+    pub fn finish_restore(&mut self) {
+        if self.reloaded_path.is_empty() || !Path::new(&self.reloaded_path).exists() {
+            self.status = "Start the game yourself with the mod still ticked, load a save and quit, then untick or delete the mod.".into();
+            return;
+        }
+        self.status = match reloaded::launch(&self.reloaded_path, &self.game_path) {
+            Ok(()) => "Game starting with vanilla data. Once you load a save and quit, untick or delete the mod.".into(),
+            Err(e) => format!("Could not start Reloaded-II: {e}. Start the game yourself, then remove the mod."),
         };
     }
 
     pub fn run_game(&mut self) {
+        self.restored = false;
         if let Err(e) = self.apply() {
             self.status = format!("Could not write tables: {e}");
             return;
