@@ -3,7 +3,7 @@
   "ModName": "GBFRER Summon Drop Picker",
   "ModAuthor": "Nebu",
   "ModVersion": "2.1.0",
-  "ModDescription": "Forces ALL six Infinity-boss summons to drop at once (Behemoth III, Wee Pincer III, Lucilius, Beelzebub, Rolan, Lilith) - each from its own quest - and lets you set every summon's skill AND equip bonus INDEPENDENTLY via the included GUI app (GBFRER Summon Picker.exe). Values stay at each summon's legit max. Offline, no install. Solo/offline only. See README.txt.",
+  "ModDescription": "Forces ALL eight boss summons to drop at once (Behemoth III, Wee Pincer III, Albacore III, Furycane Nihilla, Lucilius, Beelzebub, Rolan, Lilith) - each from its own quest - and lets you set every summon's skill AND equip bonus INDEPENDENTLY via the included GUI app (GBFRER Summon Picker.exe). Astral caps can be set to 50% or 100%. Values stay at each summon's legit max. Offline, no install. Solo/offline only. See README.txt.",
   "ModDll": "",
   "ModIcon": "",
   "IsLibrary": false,
@@ -15,5 +15,5 @@
   "ModDependencies": [ "gbfrelink.utility.manager" ],
   "OptionalDependencies": [],
   "SupportedAppId": [ "granblue_fantasy_relink.exe", "granblue_fantasy_relink_endless_ragnarok_beta_test.exe", "granblue_fantasy_relink_endless_ragnarok_demo.exe" ],
-  "ProjectUrl": ""
+  "ProjectUrl": "https://www.nexusmods.com/granbluefantasyrelink/mods/677"
 }
