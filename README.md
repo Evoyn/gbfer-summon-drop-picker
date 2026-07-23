@@ -80,8 +80,8 @@ drop can be cleared before removing the mod.
 
 ## Credits
 
-- **Nenkai** - GBFRDataTools and the Relink modding documentation / hashing.
-- **WistfulHopes** - `gbfrelink.utility.manager`, the mod loader this mod depends on.
+- **Nenkai** and all contributors - [GBFRDataTools](https://github.com/Nenkai/GBFRDataTools), the table tools and hashing.
+- **Nenkai** and **WistfulHopes** - `gbfrelink.utility.manager`, the mod loader this mod depends on.
 - **Sewer56 / Reloaded-Project** - Reloaded-II.
 - Built with **egui / eframe**.
 
