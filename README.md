@@ -4,6 +4,8 @@ Source code for the small Windows GUI app bundled with the **GBFRER Summon Drop 
 mod for *Granblue Fantasy: Relink* (Endless Ragnarok). It's published here so you can
 read exactly what the `.exe` does before you run it.
 
+Mod page: https://www.nexusmods.com/granbluefantasyrelink/mods/677
+
 The app is a helper for the [Reloaded-II](https://github.com/Reloaded-Project/Reloaded-II)
 data mod. It lets you force all eight Infinity-boss summons (Behemoth III, Wee Pincer III,
 Albacore III, Furycane Nihilla, Lucilius, Beelzebub, Rolan and Lilith) to drop at once,

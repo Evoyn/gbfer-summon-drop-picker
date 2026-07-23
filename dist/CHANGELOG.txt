@@ -1,14 +1,24 @@
 GBFRER Summon Drop Picker (GUI) - Changelog
 ===========================================
 
+v2.1.0
+------
+- Added Albacore III and Furycane Nihilla as selectable summons
+- Astral summons can now be capped to 50% (normal-tier) instead of 100%
+- Fixed leaked rolls: caps, bonuses and skill levels no longer drift off your pick
+- Fixed Furycane skills not rolling at max level
+- Recommended farm quest shown next to each summon, colored by difficulty
+- Restore vanilla tables button for a clean uninstall
+
 v2.0.0
 ------
 - Major rewrite: fully independent, per-summon customization
 - Wee Pincer III added as a selectable summon
 - Full 11-bonus menu for every summon
 - Every summon offers its full skill pool
-- Sigilis skills locked to max level 15
+- Skills locked to max level 15
 - New picker engine
 - Picks are saved
 
 Source code: https://github.com/Evoyn/gbfer-summon-drop-picker
+Mod page: https://www.nexusmods.com/granbluefantasyrelink/mods/677

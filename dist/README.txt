@@ -1,12 +1,17 @@
 ========================================================================
   GBFRER Summon Drop Picker - GUI edition           by Nebu
-  Granblue Fantasy: Relink  (Endless Ragnarok, v2.0.2)         v2.0.0
+  Granblue Fantasy: Relink  (Endless Ragnarok, v2.0.2)         v2.1.0
 ========================================================================
 
-Same mod as the script version, but with a small Windows app (egui) instead
-of the pick.bat menu. Force ALL SIX Infinity-boss summons to drop at once -
-each from its own quest - and set every summon's SKILL and EQUIP BONUS
-independently, then hit Apply (and optionally Run Game).
+  Mod page: https://www.nexusmods.com/granbluefantasyrelink/mods/677
+
+A small Windows app (egui) that forces ALL EIGHT boss summons to drop at once,
+each from its own quest, and lets you set every summon's SKILL and EQUIP BONUS
+independently, then hit Apply (and optionally Run Game). Astral summons can be
+capped to 50% instead of 100% if the max is more than you want.
+
+  Summons: Behemoth III, Wee Pincer III, Albacore III, Furycane Nihilla,
+           Lucilius, Beelzebub, Rolan, Lilith.
 
   * No install, nothing bundled to set up - it's a single .exe.
   * 100% OFFLINE. The app never touches the internet.
@@ -37,9 +42,6 @@ INSTALL  (two ways - either works)
      in Reloaded-II click the refresh/reload button, tick the mod (and
      "gbfrelink.utility.manager"), and you're set.
 
-  NOTE: use EITHER this GUI version OR the pick.bat script version - they are
-        the same mod, so don't install both at once.
-
 ------------------------------------------------------------------------
 HOW TO USE
 ------------------------------------------------------------------------
@@ -57,13 +59,19 @@ HOW TO USE
   yourself.
 
 ------------------------------------------------------------------------
+REMOVING THE MOD
+------------------------------------------------------------------------
+  Just disabling the mod can leave the forced drops in place. In the app,
+  open "Removing the mod", click "Restore vanilla tables", then start the
+  game once with the mod still ticked. After that, untick or delete the mod.
+
+------------------------------------------------------------------------
 "Windows protected your PC" / antivirus warning
 ------------------------------------------------------------------------
   The .exe is not code-signed, so Windows SmartScreen may warn the first
   time ("unknown publisher"). Click "More info" -> "Run anyway". It's a tiny
   offline app that only rewrites this mod's summon_lot.tbl and (optionally)
-  starts Reloaded-II. If you'd rather not run an .exe at all, use the
-  pick.bat script edition of this mod instead.
+  starts Reloaded-II.
 
   The full source code is public - read it or build it yourself:
       https://github.com/Evoyn/gbfer-summon-drop-picker

@@ -1,6 +1,7 @@
 pub struct Summon {
     pub name: &'static str,
     pub quest: &'static str,
+    pub tier: &'static str,
     pub astral: bool,
     pub skill_pool: &'static str,
     pub equip_pool: &'static str,
@@ -47,26 +48,26 @@ pub const BONUSES: &[Bonus] = &[
 
 // raw hashes out of summon_lot.tbl, signature skill first
 pub const SUMMONS: &[Summon] = &[
-    Summon { name: "Behemoth III", quest: "The Myths Are Real", astral: false, skill_pool: "DF902143", equip_pool: "393EF1D8", skills: &[
+    Summon { name: "Behemoth III", quest: "The Myths Are Real", tier: "Chaos++", astral: false, skill_pool: "DF902143", equip_pool: "393EF1D8", skills: &[
         ("Stout Heart", "A1A8E39D"), ("Supplementary DMG", "57AB5B10"), ("Uplift", "B5FF9FD3"),
         ("Celestial Ventus", "73220725"), ("Less Is More", "82CE278D"), ("Critical Hit Rate", "8D78A19B") ] },
-    Summon { name: "Wee Pincer III", quest: "On the Threshold of Provenance", astral: false, skill_pool: "2340DCED", equip_pool: "C39F7144", skills: &[
+    Summon { name: "Wee Pincer III", quest: "On the Threshold of Provenance", tier: "Infinity", astral: false, skill_pool: "2340DCED", equip_pool: "C39F7144", skills: &[
         ("Crabvestment Returns", "1B0D9897"), ("DMG Cap", "DC584F60"), ("Cascade", "05F2ECDC"), ("Steel Nerves", "1470F860") ] },
-    Summon { name: "Albacore III", quest: "Strifes way: Bizzare (Conflux)", astral: false, skill_pool: "1250EFD2", equip_pool: "E31F7BAD", skills: &[
+    Summon { name: "Albacore III", quest: "Strifes way: Bizzare", tier: "Conflux", astral: false, skill_pool: "1250EFD2", equip_pool: "E31F7BAD", skills: &[
         ("Natural Defenses", "0EAD65E0"), ("Path to Mastery", "5E422AE5"), ("Rupie Tycoon", "C86F3082"), ("Fast Learner", "F687C5EF") ] },
-    Summon { name: "Furycane Nihilla", quest: "The Eternal Grind", astral: false, skill_pool: "384C3333", equip_pool: "FD5DACF0", skills: &[
+    Summon { name: "Furycane Nihilla", quest: "The Eternal Grind", tier: "Chaos++", astral: false, skill_pool: "384C3333", equip_pool: "FD5DACF0", skills: &[
         ("Celestial Aqua", "A898E283"), ("Fatebreaker", "D029FE08"), ("Potion Hoarder", "24883AF3"),
         ("Guts", "E69A4694"), ("Blight Resistance", "9702860F") ] },
-    Summon { name: "Lucilius", quest: "On the Threshold of Finality", astral: true, skill_pool: "CC0B0EF1", equip_pool: "F63793E4", skills: &[
+    Summon { name: "Lucilius", quest: "On the Threshold of Finality", tier: "Infinity", astral: true, skill_pool: "CC0B0EF1", equip_pool: "F63793E4", skills: &[
         ("Alpha", "DBE1D775"), ("Beta", "8D2ADB6E"), ("Gamma", "5C862E13"), ("Berserker Echo", "EE85CD1F"),
         ("Tyranny", "71F11A9B"), ("Celestial Terra", "9232DC17") ] },
-    Summon { name: "Beelzebub", quest: "On the Threshold of Chaos", astral: true, skill_pool: "BD452CC9", equip_pool: "B7D9379B", skills: &[
+    Summon { name: "Beelzebub", quest: "On the Threshold of Chaos", tier: "Infinity", astral: true, skill_pool: "BD452CC9", equip_pool: "B7D9379B", skills: &[
         ("Spartan Echo", "3D8153A1"), ("Supplementary DMG", "57AB5B10"), ("DMG Cap", "DC584F60"),
         ("Drain", "7CCFF74F"), ("Celestial Lumen", "A7726190"), ("Improved Guard", "0AA20846") ] },
-    Summon { name: "Rolan", quest: "On the Threshold of The World", astral: true, skill_pool: "26428274", equip_pool: "A35D7A5C", skills: &[
+    Summon { name: "Rolan", quest: "On the Threshold of The World", tier: "Infinity", astral: true, skill_pool: "26428274", equip_pool: "A35D7A5C", skills: &[
         ("War Elemental", "4C588C27"), ("Uplift", "B5FF9FD3"), ("Autorevive", "95F3FA86"),
         ("Quick Cooldown", "318D12E9"), ("Drain", "7CCFF74F"), ("Aegis", "E0ABFDFE") ] },
-    Summon { name: "Lilith", quest: "On the Threshold of Destruction", astral: true, skill_pool: "05205336", equip_pool: "DCB2B22B", skills: &[
+    Summon { name: "Lilith", quest: "On the Threshold of Destruction", tier: "Infinity", astral: true, skill_pool: "05205336", equip_pool: "DCB2B22B", skills: &[
         ("War Elemental", "4C588C27"), ("Uplift", "B5FF9FD3"), ("Potion Hoarder", "24883AF3"),
         ("Tyranny", "71F11A9B"), ("Linked Together", "3FEC5F80"), ("Improved Healing", "9389CC06") ] },
 ];

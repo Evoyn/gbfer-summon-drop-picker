@@ -7,8 +7,16 @@ pub const WINDOW_ICON: &[u8] = include_bytes!("../assets/icon_256.rgba");
 
 const ACCENT: Color32 = Color32::from_rgb(0x8b, 0x7c, 0xf0);
 const MUTED: Color32 = Color32::from_rgb(0x8b, 0x92, 0xa0);
-const QUEST: Color32 = Color32::from_rgb(0x6f, 0xd6, 0xc4);
 const GREEN: Color32 = Color32::from_rgb(0x35, 0x9e, 0x63);
+
+fn tier_color(tier: &str) -> Color32 {
+    match tier {
+        "Infinity" => Color32::from_rgb(0xe6, 0x9a, 0x4d),
+        "Chaos++" => Color32::from_rgb(0xc3, 0xac, 0xf5),
+        "Conflux" => Color32::from_rgb(0x74, 0xc7, 0xea),
+        _ => MUTED,
+    }
+}
 const CARD: Color32 = Color32::from_rgb(0x1e, 0x20, 0x2a);
 const LINE: Color32 = Color32::from_rgb(0x2d, 0x32, 0x41);
 
@@ -150,7 +158,8 @@ impl eframe::App for App {
                         card(ui, CARD).show(ui, |ui| {
                             ui.horizontal(|ui| {
                                 ui.label(RichText::new(s.name).size(16.0).strong());
-                                ui.label(RichText::new(format!("  {}", s.quest)).size(12.5).color(QUEST))
+                                let c = tier_color(s.tier);
+                                ui.label(RichText::new(format!("  {} - {}", s.quest, s.tier)).size(12.5).color(c))
                                     .on_hover_text("recommended quest to farm this summon");
                                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                                     if s.astral {
