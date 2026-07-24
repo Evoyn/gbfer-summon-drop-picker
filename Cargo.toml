@@ -1,6 +1,6 @@
 [package]
-name = "egui_picker"
-version = "0.1.0"
+name = "gbfrer-summon-drop-picker"
+version = "2.1.0"
 edition = "2024"
 
 [dependencies]

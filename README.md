@@ -43,8 +43,13 @@ on Windows), then:
 cargo build --release
 ```
 
-The binary lands at `target/release/egui_picker.exe` (distributed in the mod as
+The binary lands at `target/release/gbfrer-summon-drop-picker.exe` (distributed in the mod as
 `GBFRER Summon Picker.exe`). Exact crate versions are pinned in `Cargo.lock`.
+
+The released binary is built with `--remap-path-prefix` on top of that, so the build
+machine's own directories (the Cargo registry, the checkout path) don't end up baked
+into the executable as strings. That's the only difference from a plain
+`cargo build --release`, which gives you the same app with your own paths in it.
 
 ## How it works
 

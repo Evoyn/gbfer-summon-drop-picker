@@ -504,16 +504,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "egui_picker"
-version = "0.1.0"
-dependencies = [
- "eframe",
- "rfd",
- "serde_json",
- "winresource",
-]
-
-[[package]]
 name = "either"
 version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -700,6 +690,16 @@ dependencies = [
  "futures-task",
  "pin-project-lite",
  "slab",
+]
+
+[[package]]
+name = "gbfrer-summon-drop-picker"
+version = "2.1.0"
+dependencies = [
+ "eframe",
+ "rfd",
+ "serde_json",
+ "winresource",
 ]
 
 [[package]]
